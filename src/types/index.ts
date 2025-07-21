@@ -6,54 +6,27 @@ export interface User {
   dealershipId?: string
 }
 
+export type OrderStatus = 'pending' | 'confirmed' | 'in_production' | 'built' | 'in_transit' | 'delivered' | 'cancelled'
+
 export interface Order {
   id: string
   orderNumber: string
   oemOrderNumber?: string
-  customerId: string
+  customerId?: string
   customerName: string
   customerEmail: string
   brokerId?: string
   brokerName?: string
   status: 'pending' | 'confirmed' | 'in_production' | 'built' | 'in_transit' | 'delivered' | 'cancelled'
-  vehicle: {
-    make: string
-    model: string
-    trim: string
-    year: number
-    color: string
-    vin?: string
-    reg?: string
-    imageUrl?: string
-    buildUrl?: string
-  }
-  pricing: {
-    basePrice: number
-    options: number
-    total: number
-    deposit?: number
-  }
-  dates: {
-    orderDate: string
-    buildDate?: string
-    estimatedDelivery?: string
-    actualDelivery?: string
-    lastAmendment?: string
-  }
-  location: {
-    current: 'manufacturer' | 'in_transit' | 'dealer' | 'delivered'
-    dealershipId: string
-  }
-  delivery: {
-    method: 'collection' | 'delivery'
-    address?: string
-    contactName?: string
-    contactPhone?: string
-    requestedDate?: string
-    logisticsCompany?: string
-    status: 'not_requested' | 'requested' | 'approved' | 'in_progress' | 'completed'
-  }
-  communications: Communication[]
+  vehicleModel: string
+  vehicleTrim: string
+  vehicleColor: string
+  orderValue: number
+  buildDate?: string
+  deliveryDate?: string
+  currentLocation?: string
+  vin?: string
+  buildLink?: string
   createdAt: string
   updatedAt: string
   userId: string
@@ -63,56 +36,53 @@ export interface Communication {
   id: string
   orderId: string
   userId: string
-  userName: string
-  userRole: string
   message: string
-  timestamp: string
-  type: 'note' | 'status_update' | 'delivery_request' | 'customer_inquiry'
+  sender: string
+  type: 'message' | 'delivery_request' | 'status_update'
+  createdAt: string
 }
 
 export interface StockVehicle {
   id: string
   vin: string
-  make: string
   model: string
   trim: string
-  year: number
   color: string
-  status: 'available' | 'reserved' | 'sold'
-  location: string
+  year: number
   price: number
-  imageUrl?: string
-  createdAt: string
+  location: string
+  status: 'available' | 'reserved' | 'sold' | 'damaged'
   userId: string
+  createdAt: string
+  updatedAt: string
 }
 
 export interface DeliveryRequest {
   id: string
   orderId: string
-  requestedBy: string
-  requestedByRole: string
+  userId: string
+  pickupAddress: string
   deliveryAddress: string
   contactName: string
   contactPhone: string
-  requestedDate: string
+  preferredDate: string
   specialInstructions?: string
-  status: 'pending' | 'approved' | 'declined' | 'in_progress' | 'completed'
-  logisticsCompany?: string
-  estimatedCost?: number
+  status: 'pending' | 'approved' | 'rejected' | 'in_progress' | 'completed'
   createdAt: string
-  updatedAt: string
-  userId: string
+  updatedAt?: string
 }
 
 export interface Notification {
   id: string
   userId: string
+  orderId?: string
   title: string
   message: string
-  type: 'order_update' | 'delivery_request' | 'stock_match' | 'system' | 'communication'
-  orderId?: string
+  type: 'order_update' | 'delivery_alert' | 'build_date' | 'system_alert'
+  priority: 'low' | 'medium' | 'high'
   isRead: boolean
   createdAt: string
+  updatedAt?: string
 }
 
 export interface DashboardMetrics {

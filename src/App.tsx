@@ -2,6 +2,13 @@ import { useState, useEffect } from 'react'
 import { Header } from '@/components/layout/Header'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { Dashboard } from '@/pages/Dashboard'
+import OrdersManagement from '@/pages/OrdersManagement'
+import BrokerPortal from '@/pages/BrokerPortal'
+import CustomerPortal from '@/pages/CustomerPortal'
+import DeliveryRequests from '@/pages/DeliveryRequests'
+import Notifications from '@/pages/Notifications'
+import StockManagement from '@/pages/StockManagement'
+import Settings from '@/pages/Settings'
 import { blink } from '@/blink/client'
 import type { User } from '@/types'
 
@@ -36,21 +43,21 @@ function App() {
       case 'dashboard':
         return <Dashboard user={user} />
       case 'orders':
-        return <div className="p-6"><h1 className="text-2xl font-bold">Orders Management</h1><p className="text-gray-600 mt-2">Coming soon...</p></div>
+        return <div className="p-6"><OrdersManagement /></div>
       case 'broker-portal':
-        return <div className="p-6"><h1 className="text-2xl font-bold">Broker Portal</h1><p className="text-gray-600 mt-2">Coming soon...</p></div>
+        return <div className="p-6"><BrokerPortal /></div>
       case 'customer-portal':
-        return <div className="p-6"><h1 className="text-2xl font-bold">Customer Portal</h1><p className="text-gray-600 mt-2">Coming soon...</p></div>
+        return <div className="p-6"><CustomerPortal /></div>
       case 'delivery':
-        return <div className="p-6"><h1 className="text-2xl font-bold">Delivery Requests</h1><p className="text-gray-600 mt-2">Coming soon...</p></div>
+        return <div className="p-6"><DeliveryRequests /></div>
       case 'stock':
-        return <div className="p-6"><h1 className="text-2xl font-bold">Stock Management</h1><p className="text-gray-600 mt-2">Coming soon...</p></div>
+        return <div className="p-6"><StockManagement /></div>
       case 'analytics':
         return <div className="p-6"><h1 className="text-2xl font-bold">Analytics</h1><p className="text-gray-600 mt-2">Coming soon...</p></div>
       case 'notifications':
-        return <div className="p-6"><h1 className="text-2xl font-bold">Notifications</h1><p className="text-gray-600 mt-2">Coming soon...</p></div>
+        return <div className="p-6"><Notifications /></div>
       case 'settings':
-        return <div className="p-6"><h1 className="text-2xl font-bold">Settings</h1><p className="text-gray-600 mt-2">Coming soon...</p></div>
+        return <div className="p-6"><Settings /></div>
       default:
         return <Dashboard user={user} />
     }
