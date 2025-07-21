@@ -95,11 +95,11 @@ export function Sidebar({ user, currentPage, onPageChange }: SidebarProps) {
 
   return (
     <div className={cn(
-      "bg-white border-r border-gray-200 flex flex-col transition-all duration-300",
+      "bg-card border-r border-border flex flex-col transition-all duration-300",
       isCollapsed ? "w-16" : "w-64"
     )}>
       {/* Collapse Toggle */}
-      <div className="p-4 border-b border-gray-200">
+      <div className="p-4 border-b border-border">
         <Button
           variant="ghost"
           size="sm"
@@ -139,11 +139,11 @@ export function Sidebar({ user, currentPage, onPageChange }: SidebarProps) {
 
       {/* User Role Badge */}
       {!isCollapsed && user && (
-        <div className="p-4 border-t border-gray-200">
-          <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">
+        <div className="p-4 border-t border-border">
+          <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">
             Current Role
           </div>
-          <div className="text-sm font-medium text-gray-900 capitalize">
+          <div className="text-sm font-medium text-foreground capitalize">
             {user.role}
           </div>
         </div>

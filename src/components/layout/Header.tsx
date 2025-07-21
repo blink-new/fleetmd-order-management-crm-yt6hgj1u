@@ -57,14 +57,14 @@ export function Header({ user }: HeaderProps) {
   }
 
   return (
-    <header className="bg-white border-b border-gray-200 px-6 py-4">
+    <header className="bg-card border-b border-border px-6 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">FM</span>
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-sm">FM</span>
             </div>
-            <h1 className="text-xl font-semibold text-gray-900">FleetMD</h1>
+            <h1 className="text-xl font-semibold text-foreground">FleetMD</h1>
           </div>
         </div>
 
@@ -88,15 +88,15 @@ export function Header({ user }: HeaderProps) {
               <DropdownMenuLabel>Notifications</DropdownMenuLabel>
               <DropdownMenuSeparator />
               {notifications.length === 0 ? (
-                <div className="p-4 text-center text-gray-500 text-sm">
+                <div className="p-4 text-center text-muted-foreground text-sm">
                   No notifications
                 </div>
               ) : (
                 notifications.slice(0, 5).map((notification) => (
                   <DropdownMenuItem key={notification.id} className="flex flex-col items-start p-3">
                     <div className="font-medium text-sm">{notification.title}</div>
-                    <div className="text-xs text-gray-500 mt-1">{notification.message}</div>
-                    <div className="text-xs text-gray-400 mt-1">
+                    <div className="text-xs text-muted-foreground mt-1">{notification.message}</div>
+                    <div className="text-xs text-muted-foreground/70 mt-1">
                       {new Date(notification.createdAt).toLocaleDateString()}
                     </div>
                   </DropdownMenuItem>
@@ -117,7 +117,7 @@ export function Header({ user }: HeaderProps) {
               <DropdownMenuLabel>
                 <div className="flex flex-col">
                   <span>{user?.displayName || user?.email}</span>
-                  <span className="text-xs text-gray-500 font-normal">
+                  <span className="text-xs text-muted-foreground font-normal">
                     {getRoleDisplayName(user?.role || '')}
                   </span>
                 </div>

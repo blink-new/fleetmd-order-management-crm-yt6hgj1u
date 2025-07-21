@@ -65,13 +65,13 @@ function App() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center dark">
         <div className="text-center">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-            <span className="text-white font-bold text-sm">FM</span>
+          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+            <span className="text-primary-foreground font-bold text-sm">FM</span>
           </div>
-          <div className="text-lg font-semibold text-gray-900 mb-2">FleetMD</div>
-          <div className="text-sm text-gray-500">Loading...</div>
+          <div className="text-lg font-semibold mb-2">FleetMD</div>
+          <div className="text-sm text-muted-foreground">Loading...</div>
         </div>
       </div>
     )
@@ -79,16 +79,16 @@ function App() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center dark">
         <div className="text-center">
-          <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-            <span className="text-white font-bold text-lg">FM</span>
+          <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
+            <span className="text-primary-foreground font-bold text-lg">FM</span>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">FleetMD</h1>
-          <p className="text-gray-600 mb-6">Order Management & CRM Platform</p>
+          <h1 className="text-2xl font-bold mb-2">FleetMD</h1>
+          <p className="text-muted-foreground mb-6">Order Management & CRM Platform</p>
           <button
             onClick={() => blink.auth.login()}
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-primary text-primary-foreground px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors"
           >
             Sign In to Continue
           </button>
@@ -98,7 +98,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-background text-foreground flex dark">
       <Sidebar 
         user={user} 
         currentPage={currentPage} 
